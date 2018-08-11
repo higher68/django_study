@@ -30,6 +30,6 @@ class Choice(models.Model):
     # ForeignKeyは依存関係にある2つの表を結びつける
     # 入力変数の値の候補を指定する
     # 今回はChoiceが1つのQuestionに関連づけられる
-    choice_text = models.CharField(max_lngth=200)
+    choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
     # defaultはオプション引数
