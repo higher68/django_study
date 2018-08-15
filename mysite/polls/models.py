@@ -20,10 +20,14 @@ from django.db import models
 # 個々のクラス変数はデータベースのフィールド
 class Question(models.Model): 
     question_text = models.CharField(max_length=200) # 文字のフィールド
-    pub_data = models.DateTimeField('date published')  # 日時のフィールド
+    pub_date = models.DateTimeField('date published')  # 日時のフィールド
     # 上の二つのフィールド指定で、どんなデータ型を記憶されるかをdjangoに教える
     # Question.pub_dataの中身は、人間に可読なフィールド名
     # Fieldクラスの中には必須の引数がいる。max_lengthがそれ。
+    def __str__(self):
+        return self.question_text
+
+    
 class Choice(models.Model):
     question = models.ForeignKey(Question,
                                  on_delete=models.CASCADE)
@@ -33,3 +37,6 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
     # defaultはオプション引数
+  
+    def __str__(self):
+        return self.choicen_text
