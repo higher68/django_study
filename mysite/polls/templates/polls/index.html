@@ -1,0 +1,17 @@
+<!-- {%は、テンプレートタグと呼ばれ、その部分で何かしらテンプレートの動作(ループなど)
+をさせることを表す。-->
+{% if latest_question_list %}
+<!--- <ul>タグはUnordered listの略。順序のないリストを表示するのに使用する。
+<li>でリストの各項目を記述する。
+<a>タグはアンカーの略。リンクの出発点と到達点を指定する。
+出発点ではhref属性でリンク先を指定する。-->
+<ul>
+  {% for question in latest_question_list %}
+  <li><a href="/polls/{{ question.id }}/">{{
+      question.question_text }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<!--- <p>はparagraphの略。囲まれた部分が一つの段落であることを表す。-->
+<p>No polls are available.</p>
+{% endif %}
